@@ -25,10 +25,10 @@ public abstract class Persona {
         return edad;
     }
 
-
     public void viajar() {
         System.out.println("viajar");
     }
+
 
     //método abstracto definidos
     public abstract void partidoFutbol();

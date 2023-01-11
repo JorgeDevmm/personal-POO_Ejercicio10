@@ -20,45 +20,10 @@ public class Principal {
     public static void main(String[] args) {
 
         IngresarTipoPersona();
+
+        menu();
     }
 
-    public static void menu(){
-        int opcion;
-
-        do{
-            System.out.println("\t.:MENU:.");
-            System.out.println("1. Viaje de equipo");
-            System.out.println("2. Entrenamiento");
-            System.out.println("3. Partido de Futbol");
-            System.out.println("4. Planificar Entrenamiento");
-            System.out.println("5. Entrevista");
-            System.out.println("6. Curar Lesión");
-            System.out.println("7. Salir");
-            System.out.println("\nIngresar opción : ");
-            opcion = entrada.nextInt();
-
-            switch (opcion){
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case  4:
-                    break;
-                case 5:
-                    break;
-                case  6:
-                    break;
-                case    7:
-                    break;
-                default:
-                    System.out.println("Error");
-                    break;
-            }
-
-        }while(opcion == 7);
-    }
 
     public static void IngresarTipoPersona() {
         int tipo = 0;
@@ -176,6 +141,121 @@ public class Principal {
         //agregar el objeto de tipo persona con instanciaciónd de su clase hijo al ArrayList
         persona.add(medico);
     }
+
+    //menu
+    public static void menu() {
+        int opcion;
+
+        do {
+            System.out.println("");
+            System.out.println("\t.:MENU:.");
+            System.out.println("1. Viaje de equipo");
+            System.out.println("2. Entrenamiento");
+            System.out.println("3. Partido de Futbol");
+            System.out.println("4. Planificar Entrenamiento");
+            System.out.println("5. Entrevista");
+            System.out.println("6. Curar Lesión");
+            System.out.println("7. Salir");
+            System.out.println("\nIngresar opción : ");
+            opcion = entrada.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("");
+                    viajarEquipo();
+                    break;
+                case 2:
+                    System.out.println("");
+                    entrenarEquipo();
+                    break;
+                case 3:
+                    System.out.println("");
+                    partidoFutbol();
+                    break;
+                case 4:
+                    System.out.println("");
+                    planificarEntrenamiento();
+                    break;
+                case 5:
+                    System.out.println("");
+                    DarEntrevista();
+                    break;
+                case 6:
+                    System.out.println();
+                    curarLesion();
+                    break;
+                case 7:
+                    break;
+                default:
+                    System.out.println("Error");
+                    break;
+            }
+
+        } while (opcion != 7);
+    }
+
+    //método
+    public static void viajarEquipo() {
+        //recorremos el arreglo de tipo persona para ubicar cada objeto del equipo y invocamos los métodos getters y el método viajar de la clase padre que esta heredado en cada objeto hijo1
+        for (Persona equipo : persona) {
+            System.out.print(equipo.getNombre() + " " + equipo.getApellidos() + " => ");
+            equipo.viajar();
+        }
+
+    }
+
+    public static void entrenarEquipo() {
+        //recorremos el arreglo de tipo persona para ubicar cada objeto del equipo y invocamos los métodos getters y el método viajar de la clase padre que esta heredado en cada objeto hijo1
+        for (Persona equipo : persona) {
+            System.out.print(equipo.getNombre() + " " + equipo.getApellidos() + " => ");
+            equipo.entrenamiento();
+        }
+        ;
+    }
+
+    public static void partidoFutbol() {
+        //recorremos el arreglo de tipo persona para ubicar cada objeto del equipo y invocamos los métodos getters y el método viajar de la clase padre que esta heredado en cada objeto hijo1
+        for (Persona equipo : persona) {
+            System.out.print(equipo.getNombre() + " " + equipo.getApellidos() + " => ");
+            equipo.partidoFutbol();
+        }
+
+    }
+
+    public static void planificarEntrenamiento() {
+        //recorremos el arreglo de tipo persona para ubicar cada objeto del equipo y invocamos los métodos getters y el método viajar de la clase padre que esta heredado en cada objeto hijo1
+        for (Persona equipo : persona) {
+            if (equipo instanceof Entrenador) {
+                System.out.print(equipo.getNombre() + " " + equipo.getApellidos() + " => ");
+                ((Entrenador) equipo).planificarEntrenamiento();
+            }
+        }
+    }
+
+    public static void DarEntrevista(){
+        //recorremos el arreglo de tipo persona para ubicar cada objeto del equipo y invocamos los métodos getters y el método viajar de la clase padre que esta heredado en cada objeto hijo1
+        for (Persona equipo : persona) {
+            if (equipo instanceof Futbolista) {
+                System.out.print(equipo.getNombre() + " " + equipo.getApellidos() + " => ");
+                //aplicar dowcasting - bajar en la jerarquia de clases
+                ((Futbolista) equipo).entrevista();
+            }
+        }
+
+    }
+
+    public static void curarLesion(){
+        //recorremos el arreglo de tipo persona para ubicar cada objeto del equipo y invocamos los métodos getters y el método viajar de la clase padre que esta heredado en cada objeto hijo1
+        for (Persona equipo : persona) {
+            if (equipo instanceof Medico) {
+                System.out.print(equipo.getNombre() + " " + equipo.getApellidos() + " => ");
+                //aplicar dowcasting - bajar en la jerarquia de clases
+                ((Medico) equipo).curarLesion();
+            }
+        }
+
+    }
+
 
 
 }
